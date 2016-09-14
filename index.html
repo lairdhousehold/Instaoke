@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InstaOke</title>
+    <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body ng-app="InstaOke">
+<div>
+
+
+  <div ng-include="'partials/navbar.html'"></div>
+
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 main-container">
+        <div class="col-xs-12" ng-view>
+
+        </div> <!-- directive that allows routing, will inject things into and out of the div, url will look as if we are changing pages, but we're injecting partials instead need hashMarks in routes (#/items/new = route) -->
+    </div>
+  </div>
+</div>
+
+<!--3rd party libs -->
+
+<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
+<script  type="text/javascript" src="/lib/bower_components/firebase/firebase.js" charset="utf-8" async defer></script>
+<!-- App specific files -->
+<script type="text/javascript" src="app/app.js"></script>
+<!-- providers -->
+<script type="text/javascript" src="app/values/fb-creds.js"></script>
+<script type="text/javascript" src="app/factories/itemFactory.js"></script>
+<script type="text/javascript" src="app/factories/FilterFactory.js"></script>
+<script type="text/javascript" src="app/factories/Authfactory.js"></script>
+<!-- controllers -->
+<script type="text/javascript" src="app/controllers/TopCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/LoginCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/TodoCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/ItemListCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/ItemNewCtrl.js"></script>
+<!-- <script type="text/javascript" src="app/controllers/ItemViewCtrl.js"></script> -->
+
+
+</body>
+</html>
