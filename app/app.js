@@ -13,8 +13,8 @@ var app = angular.module("InstaOkeApp", ["ngRoute"])
 app.config(function($routeProvider){
     $routeProvider.
       when ('/', {
-        templateUrl: 'partials/videoList.html',
-        controller: 'VideoListController'
+        templateUrl: 'partials/login.html',
+        controller: 'LoginCtrl'
         }).
       when ('/login', {
         templateUrl: 'partials/login.html',

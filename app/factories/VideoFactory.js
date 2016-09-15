@@ -1,13 +1,10 @@
 "use strict";
 
-app.factory("VideoFactory", ($q, $scope, $http, FirebaseURL, AuthFactory) => {
+app.factory("VideoFactory", ($q, $http, $scope, FirebaseURL, AuthFactory) => {
 
-let pic = data.items.snippet.thumbnails.default
-let videoId = data.items.id.videoId
-let videoTitle = data.items.snippet.title
-let vidSearch = $scope.videoSearch
 function searchYouTube(title) {
-  title = title.replace(' ','+');
+  let vidSearch = $scope.videoSearch
+  let data = []
   return new Promise(function(resolve,reject){
     $.ajax({
       url: `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwTRjvjVge51X-ILJ4i22ew&maxResults=10&q=${vidSearch}&key=AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc`,
@@ -15,6 +12,9 @@ function searchYouTube(title) {
     }).done(function(data){
       console.log('this is the data', data);
       console.log('yo',data.items[2].id.videoId)
+      // let pic = data.items.snippet.thumbnails.default
+      // let videoId = data.items.id.videoId
+      // let videoTitle = data.items.snippet.title
 
       resolve(data);
     }).fail(function(error){
