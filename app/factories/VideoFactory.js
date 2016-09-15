@@ -1,10 +1,16 @@
 "use strict";
 
+app.factory("VideoFactory", ($q, $scope, $http, FirebaseURL, AuthFactory) => {
+
+let pic = data.items.snippet.thumbnails.default
+let videoId = data.items.id.videoId
+let videoTitle = data.items.snippet.title
+let vidSearch = $scope.videoSearch
 function searchYouTube(title) {
   title = title.replace(' ','+');
   return new Promise(function(resolve,reject){
     $.ajax({
-      url: `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwTRjvjVge51X-ILJ4i22ew&maxResults=10&q=${title}&key=AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc`,
+      url: `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwTRjvjVge51X-ILJ4i22ew&maxResults=10&q=${vidSearch}&key=AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc`,
       method: 'GET'
     }).done(function(data){
       console.log('this is the data', data);
@@ -58,4 +64,5 @@ function updateVideo (movieId, property){
     });
   });
 }
-
+return {searchYouTube, saveVideo, getSavedVideos, deleteVideo, updateVideo}
+});

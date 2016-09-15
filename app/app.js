@@ -13,15 +13,15 @@ var app = angular.module("InstaOkeApp", ["ngRoute"])
 app.config(function($routeProvider){
     $routeProvider.
       when ('/', {
-        templateUrl: 'partials/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: 'partials/videoList.html',
+        controller: 'VideoListController'
         }).
       when ('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
       }).
         when("/items/list", { //Here we are creating a URL and equating it with its associated partial
-            templateUrl: 'partials/item-list.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
+            templateUrl: 'partials/videoList.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
             controller: "ItemListCtrl"
         }).
         when("/items/new", {
