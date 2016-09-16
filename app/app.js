@@ -20,17 +20,17 @@ app.config(function($routeProvider){
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
       }).
-        when("/video/list", { //Here we are creating a URL and equating it with its associated partial
+        when('/video', { //Here we are creating a URL and equating it with its associated partial
             templateUrl: 'partials/videoList.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
-            controller: "VideoListCtrl"
+            controller: 'VideoListCtrl'
         }).
-        when("/items/new", {
-            templateUrl: 'partials/item-form.html',
-            controller: "ItemNewCtrl"
+        when("#/video/search", {
+            templateUrl: 'partials/search.html',
+            controller: 'VideoListCtrl'
         }).
-        when('/items/view/:itemId', {
+        when('#/video/view/:videoId', {
             //The above "/: whatever" syntax is particular to URL's for which we'll be using $routeParams ... $routeParams stands in for (:)?????
-            templateUrl: "partials/item-details.html",
+            templateUrl: 'partials/',
             controller: "ItemViewCtrl"
         }).
 
@@ -39,7 +39,7 @@ app.config(function($routeProvider){
         controller: 'ItemEditCtrl'
          }).
 
-        otherwise("items/item-list");
+        otherwise("#/video/lists");
         //The above is a safety URL that prevents users from accessing URL's that we don't want them to
 });
 

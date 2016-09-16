@@ -3,28 +3,27 @@
 app.factory("VideoFactory", ($q, $http, $scope, FirebaseURL, AuthFactory) => {
 
 function searchYouTube(title) {
-  let vidSearch = $scope.videoSearch
-  let data = []
-  return new Promise(function(resolve,reject){
-    $.ajax({
-      url: `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwTRjvjVge51X-ILJ4i22ew&maxResults=10&q=${vidSearch}&key=AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc`,
-      method: 'GET'
-    }).done(function(data){
-      console.log('this is the data', data);
-      console.log('yo',data.items[2].id.videoId)
-      let pic = data.items.snippet.thumbnails.default
-      let videoId = data.items.id.videoId
-      let videoTitle = data.items.snippet.title
 
+  let data = []
+  return $q((reselve, reject)=>{
+    $http.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwTRjvjVge51X-ILJ4i22ew&maxResults=10&q=${title}&key=AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc`)
+    .success((dataObject)=> {
+      Object.keys(dataObject).forEach((key) =>{
+        dataObject[key].id = key;
+        data.push(dataObject[key]);
+      })
       resolve(data);
-    }).fail(function(error){
+    })
+    .error((error) =>{
       reject(error);
-    });
-  });
-}
+
+    })
+  })
+};
+
 function saveVideo(currentMovie) {
   let userId = firebase.auth().currentUser.uid;
-  return firebase.database().ref('users/' + userId).push(currentMovie);
+  return firebase.database().ref('users/' + userId).push(currentVideo);
 }
 
 function getSavedVideos() {
@@ -52,13 +51,13 @@ function updateVideo (movieId, property){
   let userId = firebase.auth().currentUser.uid;
   return new Promise(function(resolve,reject){
     $.ajax({
-      url: `https://movie-history-7fd8a.firebaseio.com//users/${userId}/${movieId}.json`,
+      url: `https://instaoke.firebaseio.com/users/${userId}/${videoId}.json`,
       method: 'PATCH',
       data: JSON.stringify(property),
       dataType: "json"
     }).done(function(movie){
-      console.log(movie);
-      resolve(movie);
+      console.log(video);
+      resolve(video);
     }).fail(function(error){
       reject(error);
     });

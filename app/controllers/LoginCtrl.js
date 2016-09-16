@@ -29,7 +29,7 @@ app.controller("LoginCtrl", function ($scope, $window, AuthFactory) {
         AuthFactory.loginUser($scope.account)
         .then( (userData ) => {
             if (userData) {
-                $window.location.href = "#/items/list"
+                $window.location.href ="#/video"
                 console.log(userData)
                 // console.log(userData.uid)
             }

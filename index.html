@@ -8,7 +8,7 @@
 </head>
 
 <body ng-app="InstaOkeApp">
-<div >
+<div ng-controller="PageCtrl" >
 
 
   <div ng-include="'partials/navbar.html'"></div>
@@ -25,13 +25,13 @@
 <!--3rd party libs -->
 
 <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js">
+<script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script  type="text/javascript" src="lib/bower_components/angularfire/dist/angularfire.min.js" charset="utf-8" async defer></script>
 <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
-</script>
+
 <!-- App specific files -->
 <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
-<script  type="text/javascript" src="lib/bower_components/firebase/firebase.js" charset="utf-8" async defer></script>
+<script type="text/javascript"src="lib/bower_components/firebase/firebase.js" charset="utf-8" async defer></script>
 <script type="text/javascript" src="app/app.js"></script>
 <!-- providers -->
 <script type="text/javascript" src="app/values/fb-creds.js"></script>
@@ -46,6 +46,7 @@
 <script type="text/javascript" src="app/controllers/VideoListCtrl.js"></script>
 <script type="text/javascript" src="app/controllers/PageCtrl.js"></script>
 <script type="text/javascript" src="app/controllers/InstaOkeCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
 <!-- <script type="text/javascript" src="app/controllers/ItemViewCtrl.js"></script>
 
 

@@ -1,38 +1,35 @@
-<nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+<nav class="navbar navbar-default" ng-controller="NavCtrl"> <!-- Everything in nav bound to Nav controller-->
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">InstaOke</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li class="divider"></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="col-sm-3 col-md-3 pull-right">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control video" placeholder="Search" name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" ng-click="searchYouTube" type="submit"><i class="glyphicon glyphicon-search"></i></ngbutton>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</nav>
+      </div>
+      <!-- search -->
+      <div class="col-xs-6 searchBox" ng-show="isActive('/video')">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span>
+                <!-- TODO: Bind the input to our todo list -->
+                <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText.search"> <!-- MODEL: Data -->
+              </div>
+            </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- TODO: Use Angular to loop through nav items -->
+        <ul class="nav navbar-nav navbar-right"> <!-- for in loop-->
+        <!--   <li><a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a></li>
+        </ul> -->
+        <li ng-show="!$parent.isLoggedIn"><a ng-href="#/login">Login</a></li>
+        <li ng-show="$parent.isLoggedIn"><a ng-href="#/video">New Item</a></li>
+        <li ng-show="$parent.isLoggedIn"><a ng-href="#/video">All Items</a></li>
+        <li ng-show="$parent.isLoggedIn"><button ng-click="logout()">Logout</button></li>
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
