@@ -20,9 +20,9 @@ app.config(function($routeProvider){
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
       }).
-        when("/items/list", { //Here we are creating a URL and equating it with its associated partial
+        when("/video/list", { //Here we are creating a URL and equating it with its associated partial
             templateUrl: 'partials/videoList.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
-            controller: "ItemListCtrl"
+            controller: "VideoListCtrl"
         }).
         when("/items/new", {
             templateUrl: 'partials/item-form.html',

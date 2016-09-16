@@ -12,9 +12,9 @@ function searchYouTube(title) {
     }).done(function(data){
       console.log('this is the data', data);
       console.log('yo',data.items[2].id.videoId)
-      // let pic = data.items.snippet.thumbnails.default
-      // let videoId = data.items.id.videoId
-      // let videoTitle = data.items.snippet.title
+      let pic = data.items.snippet.thumbnails.default
+      let videoId = data.items.id.videoId
+      let videoTitle = data.items.snippet.title
 
       resolve(data);
     }).fail(function(error){
