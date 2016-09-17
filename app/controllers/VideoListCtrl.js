@@ -1,11 +1,11 @@
 "use strict";
 
-app.controller("VideoListCtrl", function($scope, $location, VideoFactory, Authfactory, searchTermData) {
+app.controller("VideoListCtrl", function($scope, $location, VideoFactory, AuthFactory, searchTermData) {
   $scope.searchText = searchTermData;
   VideoFactory.searchYouTube()
   .then((videoCollectionArr)=>{
     console.log("video collection" , videoCollectionArr)
-    $scope.data.items = videoCollectionArr;
+    $scope.data = videoCollectionArr;
     console.log()
 
   });
