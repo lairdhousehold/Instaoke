@@ -8,6 +8,7 @@ app.controller("PageCtrl", function ($scope, $location, $window, AuthFactory){
             $scope.isLoggedIn = true;
             console.log("Current user logged in?", user.uid)
             $scope.$apply();
+            $window.location.href = '#/video'
         } else {
             $scope.isLoggedIn = false;
             $window.location.href = '#/login'

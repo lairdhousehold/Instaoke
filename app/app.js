@@ -24,9 +24,9 @@ app.config(function($routeProvider){
             templateUrl: 'partials/videoList.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
             controller: 'VideoListCtrl'
         }).
-        when("#/video/search", {
+        when("/search", {
             templateUrl: 'partials/search.html',
-            controller: 'VideoListCtrl'
+            controller: 'SearchCtrl'
         }).
         when('#/video/view/:videoId', {
             //The above "/: whatever" syntax is particular to URL's for which we'll be using $routeParams ... $routeParams stands in for (:)?????

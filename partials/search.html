@@ -1,0 +1,42 @@
+<body ng-controller="SearchCtrl">
+  <div class="text-center contianer">
+    <div class="jumbotron">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <h1 id="head" class="animated fadeInLeftBig">Search Songs</h1>
+      <p id="sub-head" class="animated fadeInRightBig">My mini <strong>AngularJS</strong> app for searching Youtube for videos, through the <strong>Youtube Data API</strong></p>
+      <br>
+      <br>
+      <br>
+    </div>
+
+  <form class="col-md-6">
+    <input type="text" id="query" ng-model="query" placeholder="Search..." class='form-control' ng-keyup="getVideos(query)"><br>
+  </form><br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <div class="videos" ng-init="getVideos(query)">
+      <div ng-repeat="video in data">
+        <div class="video {{data.indexOf(video) + 1}}">
+          <strong><p ng-model="newVideo.title">{{video.snippet.title}} </p></strong>
+          <img src="{{video.snippet.thumbnails.default.url}}">
+          <br><br><br><br>
+        </div>
+        <button ng-click="saveVideos()">Save to Your Collection</button>
+      </div>
+      <br><br><br><br>
+
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+
+         <!--  <iframe width="853" height="480"  ng-src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->
+</body>

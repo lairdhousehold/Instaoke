@@ -50,6 +50,7 @@ let saveVideo = function (newItem){
             })
             .error( (error) => {
                 reject(error);
+                console.log("button clicked")
             });
     });
 };

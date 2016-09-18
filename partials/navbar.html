@@ -16,7 +16,7 @@
                   <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </span>
                 <!-- TODO: Bind the input to our todo list -->
-                <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText.search"> <!-- MODEL: Data -->
+                <input type="text" class="form-control" placeholder="Search for..." ng-model="search"> <!-- MODEL: Data -->
               </div>
             </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,7 +27,7 @@
         </ul> -->
         <li ng-show="!$parent.isLoggedIn"><a ng-href="#/login">Login</a></li>
         <li ng-show="$parent.isLoggedIn"><a ng-href="#/video">New Item</a></li>
-        <li ng-show="$parent.isLoggedIn"><a ng-href="#/video">All Items</a></li>
+        <li ng-show="$parent.isLoggedIn"><a ng-href="#/search">Search</a></li>
         <li ng-show="$parent.isLoggedIn"><button ng-click="logout()">Logout</button></li>
 
       </div><!-- /.navbar-collapse -->
