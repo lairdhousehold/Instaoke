@@ -1,10 +1,10 @@
 "use strict";
 
 app.controller("LoginCtrl", function ($scope, $window, AuthFactory) {
+
     $scope.account = {
         email: '',
         password: ''
-        // userId: ''
     };
 
     $scope.register = () => {
@@ -23,20 +23,16 @@ app.controller("LoginCtrl", function ($scope, $window, AuthFactory) {
             console.log(`error creating user: ${error}`);
         })
 
-}
+    }
     $scope.login = () => {
         console.log("you clicked login");
         AuthFactory.loginUser($scope.account)
         .then( (userData ) => {
-            if (userData) {
-                $window.location.href = "#/items/list"
-                console.log(userData)
-                // console.log(userData.uid)
-            }
-            else {
-               $window.location.href = "#/login"
-            }
+            console.log("make me a happy user");
+            $window.location.href ="#/video"
 
-            })
-        }
+        });
+
+
+    }
 });

@@ -1,11 +1,24 @@
 "use strict";
 
-app.controller("VideoListController", function($scope, $location, VideoFactory, Authfactory, searchTermData){
+app.controller("VideoListCtrl", function($scope, $location, VideoFactory, AuthFactory, searchTermData) {
   $scope.searchText = searchTermData;
-  VideoFactory.searchYouTube()
+  VideoFactory.getSavedVideos()
   .then((videoCollectionArr)=>{
-    $scope.data.items = videoCollectionArr;
     console.log("video collection" , videoCollectionArr)
+    $scope.data = videoCollectionArr;
+    console.log()
+
   });
 
-})
+  $scope.deleteVideos = (videoId) => {
+    VideoFactory.deleteVideo(videoId)
+    .then( (response) => {
+      VideoFactory.getSavedVideos()
+      .then((videoCollectionArr) => {
+      $scope.items = videoCollectionArr;
+
+      });
+    });
+  };
+
+});
