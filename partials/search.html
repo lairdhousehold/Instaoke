@@ -23,8 +23,10 @@
     <div class="videos" ng-init="getVideos(query)">
       <div ng-repeat="video in data">
         <div class="video {{data.indexOf(video) + 1}}">
-          <strong><p ng-model="newVideo.title">{{video.snippet.title}} </p></strong>
+          <strong><p Id="title">{{video.snippet.title}} </p></strong>
+          <p>title
           <img src="{{video.snippet.thumbnails.default.url}}">
+          <p class="hidden" ng-model="newVideoId">{{video.id}}</p>
           <br><br><br><br>
         </div>
         <button ng-click="saveVideos()">Save to Your Collection</button>

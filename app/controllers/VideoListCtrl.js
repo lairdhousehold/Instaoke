@@ -2,7 +2,7 @@
 
 app.controller("VideoListCtrl", function($scope, $location, VideoFactory, AuthFactory, searchTermData) {
   $scope.searchText = searchTermData;
-  VideoFactory.searchYouTube()
+  VideoFactory.getSavedVideos()
   .then((videoCollectionArr)=>{
     console.log("video collection" , videoCollectionArr)
     $scope.data = videoCollectionArr;
@@ -10,10 +10,10 @@ app.controller("VideoListCtrl", function($scope, $location, VideoFactory, AuthFa
 
   });
 
-  $scope.deleteVideo = (videoId) => {
-    VideoFactory.searchYouTube(videoId)
+  $scope.deleteVideos = (videoId) => {
+    VideoFactory.deleteVideo(videoId)
     .then( (response) => {
-      VideoFactory.searchYouTube()
+      VideoFactory.getSavedVideos()
       .then((videoCollectionArr) => {
       $scope.items = videoCollectionArr;
 

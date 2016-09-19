@@ -22,9 +22,9 @@ let searchYouTube = () =>{
 };
 
 let getSavedVideos = () => {
-console.log( firebase.auth().currentUser); //FB has a built-in method to retrieve current user, i.e., "firebase.auth().currentUser"
+console.log( firebase.auth().currentUser);
     let items = [];
-    return $q( (resolve, reject) => {    //Instead of returning a new promise via $ajax syntax, use this syntax instead: $q = new Promise
+    return $q( (resolve, reject) => {
         $http.get(`${FirebaseURL}/videos.json`) //$http = $.ajax({
         //     url: .....json
         // })

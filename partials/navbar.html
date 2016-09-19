@@ -26,7 +26,7 @@
         <!--   <li><a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a></li>
         </ul> -->
         <li ng-show="!$parent.isLoggedIn"><a ng-href="#/login">Login</a></li>
-        <li ng-show="$parent.isLoggedIn"><a ng-href="#/video">New Item</a></li>
+        <li ng-show="$parent.isLoggedIn"><a ng-href="#/video">Saved Videos</a></li>
         <li ng-show="$parent.isLoggedIn"><a ng-href="#/search">Search</a></li>
         <li ng-show="$parent.isLoggedIn"><button ng-click="logout()">Logout</button></li>
 

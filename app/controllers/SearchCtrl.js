@@ -2,6 +2,19 @@
 
 
 app.controller("SearchCtrl", function($scope, $http, $sce,VideoFactory, AuthFactory, searchTermData, $interpolate,$location){
+
+    $scope.newVideo ={
+        title: '',
+        videoID: '',
+        userId: ''
+    };
+    $scope.saveVideos = function (){
+        VideoFactory.saveVideo($scope.newVideo)
+        .then(function(){
+            $location.url('/video')
+            console.log("clicked")
+        });
+    };
     $scope.getVideos = function(val){
         $http.get('https://www.googleapis.com/youtube/v3/search', {params: {
             key: 'AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc',
@@ -16,18 +29,10 @@ app.controller("SearchCtrl", function($scope, $http, $sce,VideoFactory, AuthFact
                 console.log(video)
             });
         });
-    }
-    $scope.newVideo ={
-        title: '',
-        videoID: '',
-        userId: ''
     };
-    $scope.saveVideos = function (){
-        VideoFactory.saveVideo($scope.newVideo)
-        .then(function(){
-            $location.url('/video')
-            console.log("clicked")
-        });
-    };
+    // $scope.saveMovie = function(currentMovie) => {
+    //   let userId = firebase.auth().currentUser.uid;
+    //   return firebase.database().ref('users/' + userId).push(currentVideo);
+    // }
 });
 
