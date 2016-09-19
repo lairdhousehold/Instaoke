@@ -1,47 +1,44 @@
-<div class="row filters">
+<body ng-controller="VideoListCtrl">
+  <div class="text-center contianer">
+    <div class="jumbotron">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <h1 id="head" class="animated fadeInLeftBig">Your Collection</h1>
 
-</div>
-<div class="row">
+      <br>
+      <br>
+      <br>
+    </div>
 
 
-  <div class="col offset-m1 m8 newUser">
-    <h4>You need to search and add movies to your account.</h4>
-      <ol>
-        <li>
-          First you need to search for an item using the above search bar!
-        </li>
-        <li>
+  </form><br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <div class="videos" ng-init="getVideos(query)">
+      <div ng-repeat="video in data">
+        <div >
+          <strong><p id="title">{{video.title}} </p></strong>
+          <p>title
+          <img src="{{}}">
+          <p class="hidden">{{video.videoId}}</p>
+          <br><br><br><br>
+        </div>
+        <button ng-click="saveVideos(video)">Save to Your Collection</button>
+      </div>
+      <br><br><br><br>
 
-        </li>
-        <li>
-          After you follow these steps go ahead and rate your movie using our <i class="material-icons">star</i> feature!
-        </li>
-        <li>
-          Remember that 10 stars makes your movie a favorite!
-        </li>
-      </ol>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
   </div>
 
-<div class="movieDiv col m4 col s6">
+         <!--  <iframe width="853" height="480"  ng-src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->
+</body>
 
-  <div class="z-depth-1 movieCard center-align" rating="" saved="">
-  <div class="chip right-align delete-btn" key="">
-    Delete <i class="close material-icons">close</i>
-  </div>
-    <div class="z-depth-1 movieCard center-align">
-
-  <h5 class="title">  </h5>
-
-  <p> Released in  </p>
-  <p> Staring:  </p>
-
-  <span class="rating">
-
-  </span>
-
-    <button type="button" class="addMovie" key="> Add to Watchlist </button>
-
-</div>
-</div>
-
-</div>

@@ -1,7 +1,7 @@
 "use strict";
 
 app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
-
+let fireUser = firebase.auth().currentUser.uid
 let searchYouTube = () =>{
 
   let data = []
@@ -21,13 +21,12 @@ let searchYouTube = () =>{
   })
 };
 
-let getSavedVideos = () => {
+let getSavedVideos = (userId) => {
 console.log( firebase.auth().currentUser);
     let items = [];
     return $q( (resolve, reject) => {
-        $http.get(`${FirebaseURL}/videos.json`) //$http = $.ajax({
-        //     url: .....json
-        // })
+        $http.get(`${FirebaseURL}/videos.json?orderBy="userId"&equalTo="${fireUser}"`)
+
         .success((itemObject) => { //Receive an object from Firebase, object contains each item list inside
             Object.keys(itemObject).forEach((key) => { //Takes every key in an object passed in and makes an array of each key. So we create an array of each FB item--doable because there's only one key in each object w/in larger/single Firebase object, and that's the object ID (aka name)
                 itemObject[key].id = key; //Here we are setting a property on each object called id and making it synonymous with the object's name/sole key in larger Firebase object; SET A PROPERTY ON EACH ITEM OBJECT, AS IDENTIFIED BY ITS KEY, SYNONYMOUS WITH THAT KEY
@@ -35,6 +34,7 @@ console.log( firebase.auth().currentUser);
             });
 
             resolve(items); //Here we resolve: we officially have itemObject
+            console.log(items)
         })
         .error((error) => {
             reject(error);
