@@ -3,18 +3,16 @@
 
 app.controller("SearchCtrl", function($scope, $http, $sce,VideoFactory, AuthFactory, searchTermData, $interpolate,$location){
 
-    $scope.newVideo ={
-        title: '',
-        videoID: '',
-        userId: ''
-    };
-    $scope.saveVideos = function (){
-        VideoFactory.saveVideo($scope.newVideo)
+
+    $scope.saveVideos = function (video){
+
+        VideoFactory.saveVideo(video)
         .then(function(){
             $location.url('/video')
             console.log("clicked")
         });
     };
+
     $scope.getVideos = function(val){
         $http.get('https://www.googleapis.com/youtube/v3/search', {params: {
             key: 'AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc',

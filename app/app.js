@@ -10,6 +10,14 @@ var app = angular.module("InstaOkeApp", ["ngRoute"])
 
 //ROUTE = URL OF APPLICATION, NOT PATH TO FILES
 
+let isAuth = (AuthFactory) => new Promise( (resolve, reject)=>{
+    if (AuthFactory.isAuthenticated()){
+        resolve();
+    }else {
+        reject();
+    }
+});
+
 app.config(function($routeProvider){
     $routeProvider.
       when ('/', {
@@ -22,24 +30,28 @@ app.config(function($routeProvider){
       }).
         when('/video', { //Here we are creating a URL and equating it with its associated partial
             templateUrl: 'partials/videoList.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
-            controller: 'VideoListCtrl'
+            controller: 'VideoListCtrl',
+            resolve: {isAuth}
         }).
         when("/search", {
             templateUrl: 'partials/search.html',
-            controller: 'SearchCtrl'
+            controller: 'SearchCtrl',
+            resolve: {isAuth}
         }).
         when('#/video/view/:videoId', {
             //The above "/: whatever" syntax is particular to URL's for which we'll be using $routeParams ... $routeParams stands in for (:)?????
             templateUrl: 'partials/',
-            controller: "ItemViewCtrl"
+            controller: "ItemViewCtrl",
+            resolve: {isAuth}
         }).
 
         when('/items/edit/:itemId', {
         templateUrl: 'partials/edit-task.html',
-        controller: 'ItemEditCtrl'
+        controller: 'ItemEditCtrl',
+        resolve: {isAuth}
          }).
 
-        otherwise("#/video/lists");
+        otherwise("/");
         //The above is a safety URL that prevents users from accessing URL's that we don't want them to
 });
 

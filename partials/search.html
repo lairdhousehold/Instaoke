@@ -26,10 +26,10 @@
           <strong><p Id="title">{{video.snippet.title}} </p></strong>
           <p>title
           <img src="{{video.snippet.thumbnails.default.url}}">
-          <p class="hidden" ng-model="newVideoId">{{video.id}}</p>
+          <p class="hidden">{{video.id}}</p>
           <br><br><br><br>
         </div>
-        <button ng-click="saveVideos()">Save to Your Collection</button>
+        <button ng-click="saveVideos(video)">Save to Your Collection</button>
       </div>
       <br><br><br><br>
 

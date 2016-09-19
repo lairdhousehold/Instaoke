@@ -42,7 +42,13 @@ console.log( firebase.auth().currentUser);
     });
 };
 
-let saveVideo = function (newItem){
+let saveVideo = function (video){
+    let newItem ={
+        title: video.snippet.title,
+        videoId:video.id.videoId,
+        userId:firebase.auth().currentUser.uid
+    }
+    console.log("save video", newItem);
     return $q(function(resolve, reject){
         $http.post(`${FirebaseURL}/videos.json`, JSON.stringify(newItem))
             .success( (ObjFromFirebase) =>{
