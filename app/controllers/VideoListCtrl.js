@@ -1,6 +1,7 @@
 "use strict";
 
 app.controller("VideoListCtrl", function($scope, $location, VideoFactory, AuthFactory, searchTermData) {
+
   $scope.searchText = searchTermData;
   VideoFactory.getSavedVideos()
   .then((videoCollectionArr)=>{
@@ -10,14 +11,14 @@ app.controller("VideoListCtrl", function($scope, $location, VideoFactory, AuthFa
 
   });
 
-  $scope.deleteVideos = (videoId) => {
-    VideoFactory.deleteVideo(videoId)
+  $scope.deleteVideos = (itemId) => {
+    VideoFactory.deleteVideo(itemId)
     .then( (response) => {
       VideoFactory.getSavedVideos()
       .then((videoCollectionArr) => {
-      $scope.items = videoCollectionArr;
-
+           $scope.items = videoCollectionArr;
       });
+
     });
   };
 
