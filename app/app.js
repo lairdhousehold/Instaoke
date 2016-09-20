@@ -38,10 +38,10 @@ app.config(function($routeProvider){
             controller: 'SearchCtrl',
             resolve: {isAuth}
         }).
-        when('#/video/singleVideo', {
-            //The above "/: whatever" syntax is particular to URL's for which we'll be using $routeParams ... $routeParams stands in for (:)?????
-            templateUrl: 'partials/',
-            controller: "",
+        when('/singleVideo', {
+            //The above "/: whatever" syntax is particular to URL's for which we'll be using $routeParsams ... $routeParams stands in for (:)?????
+            templateUrl: 'partials/playVid.html',
+            controller: "VideoListCtrl",
             resolve: {isAuth}
         }).
 

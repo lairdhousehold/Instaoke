@@ -1,44 +1,46 @@
 <body ng-controller="VideoListCtrl">
-  <div class="text-center contianer">
-    <div class="jumbotron">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-      <h1 id="head" class="animated fadeInLeftBig">Your Collection</h1>
-
-      <br>
-      <br>
-      <br>
-    </div>
-
-
-  </form><br>
-  <br>
-  <br>
-  <br>
-  <br>
-    <div class="videos" ng-init="getVideos(query)">
-      <div ng-repeat="video in data">
-        <div >
-          <strong><p id="title">{{video.title}} </p></strong>
-          <p>title
-          <img src=>
-          <p class="hidden">{{video.videoId}}</p>
-          <br><br><br><br>
+    <div class="text-center contianer">
+        <div class="jumbotron">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 id="head" class="animated fadeInLeftBig">Your Collection</h1>
+            <br>
+            <br>
+            <br>
         </div>
-        <button ng-click="deleteVideos(video.id)" >Save to Your Collection</button>
-      </div>
-      <br><br><br><br>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="videos" ng-init="getVideos(query)">
+            <div ng-repeat="video in data">
+                <div>
+                    <strong><p id="title">{{video.title}} </p></strong>
+                    <p>
+                    <img ng-click="getOneVideo(video.videoId)" src="{{video.pic.url}}">
 
-      <br>
-      <br>
-      <br>
-      <br>
+                        <p class="hidden">{{video.videoId}}</p>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                </div>
+                <button ng-click="deleteVideos(video.id)">Delete From Your Collection</button>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
     </div>
-  </div>
-
-         <!--  <iframe width="853" height="480"  ng-src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->
+    <!--  <iframe width="853" height="480"  ng-src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->
 </body>
-
