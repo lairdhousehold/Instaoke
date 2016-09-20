@@ -63,7 +63,7 @@ let saveVideo = function (video){
 
 let deleteVideo = (itemId) => {
     return $q( (resolve, reject) => {
-        $http.delete(`${FirebaseURL}/videos/${videoId}.json`)
+        $http.delete(`${FirebaseURL}/videos/${itemId}.json`)
         .success( (objFromFirebase) => {
             resolve(objFromFirebase);
         });
@@ -72,7 +72,7 @@ let deleteVideo = (itemId) => {
 
 let getSingleVideo = (itemId) => {
     return $q ( (resolve, reject) => {
-        $http.get(`${FirebaseURL}/videos/${videoId}.json`)
+        $http.get(`${FirebaseURL}/videos/${itemId}.json`)
         .success( ( singleItem ) => {
             resolve (singleItem);
           });
@@ -81,7 +81,7 @@ let getSingleVideo = (itemId) => {
 
 let rateVideo = (itemId, editedItem) => {
         return $q ( (resolve, reject) => {
-            $http.patch(`${FirebaseURL}/videos/${videoId}.json`, JSON.stringify(editedItem))
+            $http.patch(`${FirebaseURL}/videos/${itemId}.json`, JSON.stringify(editedItem))
             .success( (result) => {
                resolve(result);
 

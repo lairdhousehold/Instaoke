@@ -35,7 +35,7 @@ app.factory("AuthFactory", function ($window) {
     let getUserId = function (user){
         let userId = null;
         return (firebase.auth().currentUser)
-        console.log(currentUser)
+
         userId = user.uid
         }
 
