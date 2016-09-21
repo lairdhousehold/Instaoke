@@ -74,7 +74,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
 
     let getSingleVideo = (videoId) => {
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos/${Id}.json`)
+            $http.get(`${FirebaseURL}/videos/${videoId}.json`)
                 .success((singleItem) => {
                     resolve(singleItem);
                 });

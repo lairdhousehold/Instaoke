@@ -38,7 +38,7 @@ app.config(function($routeProvider){
             controller: 'SearchCtrl',
             resolve: {isAuth}
         }).
-        when(`/video/:videoId`, {
+        when('/video/:videoId', {
         templateUrl: 'partials/playVid.html',
         controller: 'OneVideoCtrl',
         resolve: {isAuth}

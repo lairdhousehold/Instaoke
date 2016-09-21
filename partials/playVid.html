@@ -1,9 +1,10 @@
-
-<div ng->
-<div>
-<p>Play Video</p>
-    <iframe width="853" height="480"  ng-src='{{videoId}}' frameborder="0" allowfullscreen>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Pa5EmVry01Y
-    " frameborder="0" allowfullscreen></iframe>
-</div>
+<div ng-controller="OneVideoCtrl">
+    <div>
+        <p>Play Video</p>
+        <p>{{currentVideo.videoId}}</p>
+        <p>{{currentPath}}</p>
+        <iframe width="853" height="480" ng-src='{{currentPath}}' frameborder="0" allowfullscreen>
+        </iframe>
+        <iframe width="560" height="315" src="{{currentPath}}" frameborder="0" allowfullscreen></iframe>
+    </div>
 </div>
