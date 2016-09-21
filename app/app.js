@@ -1,6 +1,6 @@
 "use strict";
 var app = angular.module("InstaOkeApp", ["ngRoute"])
-.constant('FirebaseURL','https://instaoke.firebaseio.com/');
+    .constant('FirebaseURL', 'https://instaoke.firebaseio.com/');
 //Module takes two arguments: name and array of dependencies
 //Module has pseudo-global scope
 //Controllers (functions) have local/lexical scope
@@ -10,51 +10,51 @@ var app = angular.module("InstaOkeApp", ["ngRoute"])
 
 //ROUTE = URL OF APPLICATION, NOT PATH TO FILES
 
-let isAuth = (AuthFactory) => new Promise( (resolve, reject)=>{
-    if (AuthFactory.isAuthenticated()){
+let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
+    if (AuthFactory.isAuthenticated()) {
         resolve();
-    }else {
+    } else {
         reject();
     }
 });
 
-app.config(function($routeProvider){
+app.config(function($routeProvider) {
     $routeProvider.
-      when ('/', {
+    when('/', {
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
-        }).
-      when ('/login', {
+    }).
+    when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
-      }).
-        when('/video', { //Here we are creating a URL and equating it with its associated partial
-            templateUrl: 'partials/videoList.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
-            controller: 'VideoListCtrl',
-            resolve: {isAuth}
-        }).
-        when("/search", {
-            templateUrl: 'partials/search.html',
-            controller: 'SearchCtrl',
-            resolve: {isAuth}
-        }).
-        when('/video/:videoId', {
+    }).
+    when('/video', { //Here we are creating a URL and equating it with its associated partial
+        templateUrl: 'partials/videoList.html', //Note that the grammar here specifies "Url", not all upper-case ("URL")
+        controller: 'VideoListCtrl',
+        resolve: { isAuth }
+    }).
+    when("/search", {
+        templateUrl: 'partials/search.html',
+        controller: 'SearchCtrl',
+        resolve: { isAuth }
+    }).
+    when('/video/:videoId', {
         templateUrl: 'partials/playVid.html',
         controller: 'OneVideoCtrl',
-        resolve: {isAuth}
-         }).
+        resolve: { isAuth }
+    }).
 
-        otherwise("/");
-        //The above is a safety URL that prevents users from accessing URL's that we don't want them to
+    otherwise("/");
+    //The above is a safety URL that prevents users from accessing URL's that we don't want them to
 });
 
 //what you do right when the app runs
-app.run( ($location, FBCreds) => {
-        let creds = FBCreds;
-        let authConfig = {
-            apiKey: creds.key,
-            authDomain: creds.authDomain
-        };
+app.run(($location, FBCreds) => {
+    let creds = FBCreds;
+    let authConfig = {
+        apiKey: creds.key,
+        authDomain: creds.authDomain
+    };
 
-firebase.initializeApp(authConfig);
+    firebase.initializeApp(authConfig);
 });

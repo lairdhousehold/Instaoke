@@ -19,7 +19,7 @@ app.controller("VideoListCtrl", function($scope, $sce, $location, VideoFactory, 
             .then((response) => {
                 VideoFactory.getSavedVideos()
                     .then((videoCollectionArr) => {
-                        $scope.items = videoCollectionArr;
+                        $scope.data = videoCollectionArr;
                     });
 
             });

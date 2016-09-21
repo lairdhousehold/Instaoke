@@ -68,6 +68,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
             $http.delete(`${FirebaseURL}/videos/${itemId}.json`)
                 .success((objFromFirebase) => {
                     resolve(objFromFirebase);
+                    console.log(objFromFirebase)
                 });
         });
     };
@@ -91,14 +92,14 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
     //     });
     // };
     let editVideo = (videoId, commentedVideo) => {
-        return $q ( (resolve, reject) => {
+        return $q((resolve, reject) => {
             $http.patch(`${FirebaseURL}/videos/${videoId}.json`, JSON.stringify(commentedVideo))
-            .success( (result) => {
-               resolve(result);
+                .success((result) => {
+                    resolve(result);
 
+                });
         });
-    });
-};
+    };
 
 
     return { searchYouTube, getSingleVideo, editVideo, saveVideo, getSavedVideos, deleteVideo }

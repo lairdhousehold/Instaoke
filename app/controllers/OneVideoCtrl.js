@@ -17,6 +17,7 @@ app.controller("OneVideoCtrl", function($scope, $sce, $routeParams, $location, $
             $scope.runVideoEdit = function(commentedVideo) {
                 let id = $routeParams.videoId;
                 console.log(commentedVideo)
+
                 // VideoFactory.editVideo($routeParams.videoId)
                 VideoFactory.editVideo(id, commentedVideo)
                     .then(() =>
@@ -36,6 +37,21 @@ app.controller("OneVideoCtrl", function($scope, $sce, $routeParams, $location, $
                 //NOTICE THAT TO CHAIN YOUR THENS YOU CAN'T USE A SEMI-COLON UNTIL THE VERY LAST ONE
 
             };
+            var video = document.querySelector("#videoElement");
+
+            navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+            if (navigator.getUserMedia) {
+                navigator.getUserMedia({ video: true }, handleVideo, videoError);
+            }
+
+            function handleVideo(stream) {
+                video.src = window.URL.createObjectURL(stream);
+            }
+
+            function videoError(e) {
+
+            }
         });
 
 
