@@ -1,44 +1,37 @@
+<!DOCTYPE html>
+
 <body ng-controller="SearchCtrl">
-  <div class="text-center contianer">
-    <div class="jumbotron">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-      <h1 id="head" class="animated fadeInLeftBig">Search Songs</h1>
-      <p id="sub-head" class="animated fadeInRightBig">My mini <strong>AngularJS</strong> app for searching Youtube for videos, through the <strong>Youtube Data API</strong></p>
-      <br>
-      <br>
-      <br>
-    </div>
-
-  <form class="col-md-6">
-    <input type="text" id="query" ng-model="query" placeholder="Search..." class='form-control' ng-keyup="getVideos(query)"><br>
-  </form><br>
-  <br>
-  <br>
-  <br>
-  <br>
-    <div class="videos" ng-init="getVideos(query)">
-      <div ng-repeat="video in data">
-        <div class="video {{data.indexOf(video) + 1}}">
-          <strong><p Id="title">{{video.snippet.title}} </p></strong>
-          <p>title
-          <img src="{{video.snippet.thumbnails.default.url}}">
-          <p class="hidden">{{video.id}}</p>
-          <br><br><br><br>
+    <div>
+        <div class="text-center contianer">
+            <div>
+                <h1 id="head" class="">InstaOke Search</h1>
+            </div>
+            <form>
+                <input type="text" id="query" ng-model="query" placeholder="Search..." class='form-control' ng-keyup="getVideos(query)">
+                <br>
+            </form>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="videos" ng-init="getVideos(query)">
+            </div>
         </div>
-        <button ng-click="saveVideos(video)">Save to Your Collection</button>
-      </div>
-      <br><br><br><br>
-
-      <br>
-      <br>
-      <br>
-      <br>
+        <article col-sm-3 class="video1" ng-repeat="video in data">
+            <div class="video {{data.indexOf(video) + 1}}">
+                <strong><h5 Id="title">{{video.snippet.title}} </h5></strong>
+                <div col-sm-10 ng-show="preview">
+                    <button ng-click="preview=false">close preview</button>
+                    <iframe width="853" height="480" ng-src='{{video.videoID}}' frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
+                <img src="{{video.snippet.thumbnails.medium.url}}">
+                <p class="hidden">{{video.id}}</p>
+            </div>
+            <button ng-click="saveVideos(video)">Save to Your Collection</button>
+            <button ng-click="preview=true">preview</button>
+        </article>
     </div>
-  </div>
-
-         <!--  <iframe width="853" height="480"  ng-src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->
+    <!--  <iframe width="853" height="480"  ng-src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->
 </body>
