@@ -81,18 +81,18 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
         });
     };
 
-    let rateVideo = (itemId, editedItem) => {
-        return $q((resolve, reject) => {
-            $http.patch(`${FirebaseURL}/videos/${itemId}.json`, JSON.stringify(editedItem))
-                .success((result) => {
-                    resolve(result);
+    // let rateVideo = (itemId, editedItem) => {
+    //     return $q((resolve, reject) => {
+    //         $http.patch(`${FirebaseURL}/videos/${itemId}.json`, JSON.stringify(editedItem))
+    //             .success((result) => {
+    //                 resolve(result);
 
-                });
-        });
-    };
-    let editVideo = (videoId, editedItem) => {
+    //             });
+    //     });
+    // };
+    let editVideo = (videoId, commentedVideo) => {
         return $q ( (resolve, reject) => {
-            $http.patch(`${FirebaseURL}/items/${itemId}.json`, JSON.stringify(editedItem))
+            $http.patch(`${FirebaseURL}/videos/${videoId}.json`, JSON.stringify(commentedVideo))
             .success( (result) => {
                resolve(result);
 
@@ -101,5 +101,5 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
 };
 
 
-    return { searchYouTube, getSingleVideo, saveVideo, getSavedVideos, deleteVideo, rateVideo }
+    return { searchYouTube, getSingleVideo, editVideo, saveVideo, getSavedVideos, deleteVideo }
 });
