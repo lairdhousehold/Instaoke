@@ -22,7 +22,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
     };
 
     let getSavedVideos = (userId) => {
-        console.log(firebase.auth().currentUser);
+        // console.log(firebase.auth().currentUser);
         let items = [];
         return $q((resolve, reject) => {
             $http.get(`${FirebaseURL}/videos.json?orderBy="userId"&equalTo="${fireUser}"`)
@@ -72,9 +72,9 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
         });
     };
 
-    let getSingleVideo = (itemId) => {
+    let getSingleVideo = (videoId) => {
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos/${itemId}.json`)
+            $http.get(`${FirebaseURL}/videos/${Id}.json`)
                 .success((singleItem) => {
                     resolve(singleItem);
                 });
@@ -90,6 +90,15 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
                 });
         });
     };
+    let editVideo = (videoId, editedItem) => {
+        return $q ( (resolve, reject) => {
+            $http.patch(`${FirebaseURL}/items/${itemId}.json`, JSON.stringify(editedItem))
+            .success( (result) => {
+               resolve(result);
+
+        });
+    });
+};
 
 
     return { searchYouTube, getSingleVideo, saveVideo, getSavedVideos, deleteVideo, rateVideo }
