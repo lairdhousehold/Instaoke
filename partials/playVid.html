@@ -1,19 +1,20 @@
 <div ng-controller="OneVideoCtrl">
     <div>
         <p>Play Video</p>
-
         <h2>{{currentVideo.title}}</h2>
         <iframe width="853" height="480" ng-src='{{currentPath}}' frameborder="0" allowfullscreen></iframe>
         <h2>Comments:{{currentVideo.comments}}</h2>
         <button ng-click="comments=true"> Add Comments</button>
         <div ng-show="comments">
-         <label>Assigned To</label>
-        <input type="text" class="form-control" placeholder="Place your comments here" ng-model="currentVideo.comments"/>
-        <button ng-click="runVideoEdit(currentVideo)">Submit</button>
+            <input type="text" class="form-control" placeholder="Place your comments here" ng-model="currentVideo.comments" />
+            <button ng-click="runVideoEdit(currentVideo)">Submit</button>
+            <button ng-click="fool=true">Act A Fool</button>
         </div>
-
-
-
+        <div ng-show="fool" id="container">
+            <video autoplay="true" id="videoElement">
+            </video>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
         <p></p>
     </div>
 </div>

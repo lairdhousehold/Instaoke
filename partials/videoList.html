@@ -1,14 +1,23 @@
-<article class="col-sm-3 videox" ng-repeat="video in data">
-    <div>
+<div ng-controller="VideoListCtrl">
+
+
+
+
+
+
+
+
+    <article class="col-sm-3 videox" ng-repeat="video in data| filter: {title: searchText.search}">
         <div>
-            <strong><p id="title">{{video.title}} </p></strong>
-            <p>
-                <img ng-src="{{video.pic.url}}">
-                <button ng-click="go('/video/{{video.id}}')"> Watch video</button>
-                <button ng-click="deleteVideos(video.id)">Delete</button>
-                <div class="col-xs-6"><a ng-href="#/video/{{video.id}}">{{video.title}}</a></div>
+            <div>
+                <strong><p id="title">{{video.title}} </p></strong>
+                <p>
+                    <img ng-src="{{video.pic.url}}">
+                    <button ng-click="deleteVideos(video.id)">Delete</button>
+                    <div class="col-xs-6"><a ng-href="#/video/{{video.id}}">Watch Video</a></div>
+            </div>
         </div>
-    </div>
-</article>
+    </article>
+</div>
 <!--  <iframe width="853" height="480"  ng
 -src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->

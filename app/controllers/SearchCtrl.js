@@ -29,8 +29,8 @@ app.controller("SearchCtrl", function($scope, $http, $sce, VideoFactory, AuthFac
                 console.log(video)
             });
             $scope.toggle = function() {
-        $scope.myVar = !$scope.myVar;
-    };
+                $scope.myVar = !$scope.myVar;
+            };
         });
     };
     // $scope.saveMovie = function(currentMovie) => {
