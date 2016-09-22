@@ -2,7 +2,7 @@
     <div>
         <div class="text-center contianer">
             <div>
-                <h1 id="head" class="">InstaOke Search</h1>
+                <h1 id="head">InstaOke Search</h1>
             </div>
             <form>
                 <input type="text" id="query" ng-model="query" placeholder="Search..." class='form-control' ng-keyup="getVideos(query)">
@@ -16,19 +16,19 @@
             <div class="videos" ng-init="getVideos(query)">
             </div>
         </div>
-        <article col-sm-3 class="video1" ng-repeat="video in data">
+        <article class="col-sm-3 video1" ng-repeat="video in data">
             <div class="video {{data.indexOf(video) + 1}}">
-                <strong><h5 Id="title">{{video.snippet.title}} </h5></strong>
-                <div col-sm-10 ng-show="preview">
-                    <button ng-click="preview=false">close preview</button>
+                <strong><p Id="title">{{video.snippet.title}} </p></strong>
+                <div class="col-sm-10" ng-show="preview">
+                    <button class="btn" ng-click="preview=false">close preview</button>
                     <iframe width="853" height="480" ng-src='{{video.videoID}}' frameborder="0" allowfullscreen>
                     </iframe>
                 </div>
                 <img src="{{video.snippet.thumbnails.medium.url}}">
                 <p class="hidden">{{video.id}}</p>
             </div>
-            <button ng-click="saveVideos(video)">Save to Your Collection</button>
-            <button ng-click="preview=true">preview</button>
+            <button class="btn" ng-click="saveVideos(video)">Save to Your Collection</button>
+            <button class="btn" ng-click="preview=true">preview</button>
         </article>
     </div>
     <!--  <iframe width="853" height="480"  ng-src='{{video.videoID}}' ng-model="newVideo.videoID" frameborder="0" allowfullscreen> </iframe> -->
