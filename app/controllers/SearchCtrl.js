@@ -18,7 +18,7 @@ app.controller("SearchCtrl", function($scope, $http, $sce, VideoFactory, AuthFac
             params: {
                 key: 'AIzaSyAgzx6fyVGBB_4a4LM9Xv6HBjxY-eqj7Hc',
                 part: 'snippet',
-                channelId: 'UCwTRjvjVge51X-ILJ4i22ew',
+                // channelId: 'UCwTRjvjVge51X-ILJ4i22ew',
                 type: 'video',
                 q: val
             }
