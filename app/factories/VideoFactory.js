@@ -6,7 +6,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
     let getSavedVideos = (userId) => {
         let items = [];
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos.json?orderBy="userId"&equalTo="${fireUser}"`)
+            $http.get(`${FirebaseURL}/videos.json?"userId"equalTo="${firebase.auth().currentUser.uid}"`)
 
             .success((itemObject) => {
                     Object.keys(itemObject).forEach((key) => {
@@ -15,7 +15,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
                     });
 
                     resolve(items);
-                    console.log(items)
+                    console.log(fireUser)
                 })
                 .error((error) => {
                     reject(error);
