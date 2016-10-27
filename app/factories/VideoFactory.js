@@ -3,25 +3,40 @@
 app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
     let fireUser = firebase.auth().currentUser.uid
 
-    let getSavedVideos = (userId) => {
-        let items = [];
-        return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos.json?orderBy="userId"&equalTo="${fireUser}"`)
+    // let getSavedVideos = (userId) => {
+    //     let items = [];
+    //     return $q((resolve, reject) => {
+    //         $http.get(`${FirebaseURL}/videos.json?equalTo"videos.userId"=${fireUser}`)
 
-            .success((itemObject) => {
-                    Object.keys(itemObject).forEach((key) => {
-                        itemObject[key].id = key;
-                        items.push(itemObject[key]);
-                    });
+    //         .success((itemObject) => {
+    //                 Object.keys(itemObject).forEach((key) => {
+    //                     itemObject[key].id = key;
+    //                     items.push(itemObject[key]);
+    //                 });
 
-                    resolve(items);
-                    console.log(items)
-                })
-                .error((error) => {
-                    reject(error);
-                });
-        });
-    };
+    //                 resolve(items);
+    //                 console.log(items)
+    //             })
+    //             .error((error) => {
+    //                 reject(error);
+    //             });
+    //     });
+    // };
+function getSavedVideos() {
+  if (firebase.auth().currentUser) {
+    let userId = firebase.auth().currentUser.uid;
+    return firebase.database().ref('videos/' + userId)
+      .once('value')
+      .then(function(snapshot) {
+      var data = snapshot.val();
+      return data;
+    });
+  } else {
+    return new Promise(function(resolve,reject) {
+      resolve();
+    })
+  }
+}
 
     let saveVideo = function(video) {
         let newItem = {
