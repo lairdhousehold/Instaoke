@@ -1,6 +1,6 @@
 "use strict";
 var app = angular.module("InstaOkeApp", ["ngRoute"])
-    .constant('FirebaseURL', 'https://instaokie-a9d62.firebaseio.com/');
+    .constant('FirebaseURL', 'https://instaokie-a9d62.firebaseio.com');
 //Module takes two arguments: name and array of dependencies
 //Module has pseudo-global scope
 //Controllers (functions) have local/lexical scope

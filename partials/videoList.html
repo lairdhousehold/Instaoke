@@ -1,7 +1,7 @@
 <div ng-controller="VideoListCtrl">
     <img src="/app/img/instaOke2.jpg">
     <h1 id="head" class="">Video Collection</h1>
-    <article class="col-sm-3 videox" ng-repeat="video in data| filter: {title: searchText.search}">
+    <article class="col-sm-3 videox"  ng-repeat="video in data| filter: {title: searchText.search}">
         <div>
             <div>
                 <strong><p id="title">{{video.title}} </p></strong>

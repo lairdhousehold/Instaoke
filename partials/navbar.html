@@ -18,7 +18,7 @@
                 <li ng-show="isActive('/search')"><a ng-href="#/video">Saved Videos</a></li>
                 <li ng-show="isActive('/video')"><a ng-href="#/search">Search</a></li>
                 <li ng-show="!isActive('/')">
-                    <button class="btn" ng-click="logout()">Logout</button>
+                    <button ng-show="!isActive('/login')" class="btn" ng-click="logout()">Logout</button>
                 </li>
             </ul>
         </div>

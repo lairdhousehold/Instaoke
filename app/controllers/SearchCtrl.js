@@ -20,7 +20,7 @@ app.controller("SearchCtrl", function($scope, $http, $sce, VideoFactory, AuthFac
                 part: 'snippet',
                 // channelId: 'UCwTRjvjVge51X-ILJ4i22ew',
                 type: 'video',
-                q: val
+                q: val+"karaoke"
             }
         }).success(function(data) {
             $scope.data = data.items;
