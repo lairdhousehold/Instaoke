@@ -6,7 +6,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
     let getSavedVideos = (userId) => {
         let items = [];
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos.json?"userId"equalTo="${firebase.auth().currentUser.uid}"`)
+            $http.get(`${FirebaseURL}/${fireUser}/videos.json`)
 
             .success((itemObject) => {
                     Object.keys(itemObject).forEach((key) => {
@@ -33,7 +33,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
         }
         console.log("save video", newItem);
         return $q(function(resolve, reject) {
-            $http.post(`${FirebaseURL}/videos.json`, JSON.stringify(newItem))
+            $http.post(`${FirebaseURL}/${fireUser}/videos.json`, JSON.stringify(newItem))
                 .success((ObjFromFirebase) => {
                     resolve(ObjFromFirebase); //
                 })
@@ -46,7 +46,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
 
     let deleteVideo = (itemId) => {
         return $q((resolve, reject) => {
-            $http.delete(`${FirebaseURL}/videos/${itemId}.json`)
+            $http.delete(`${FirebaseURL}/${fireUser}/videos/${itemId}.json`)
                 .success((objFromFirebase) => {
                     resolve(objFromFirebase);
                     console.log(objFromFirebase)
@@ -56,7 +56,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
 
     let getSingleVideo = (videoId) => {
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos/${videoId}.json`)
+            $http.get(`${FirebaseURL}/${fireUser}/videos/.json`)
                 .success((singleItem) => {
                     resolve(singleItem);
                 });
@@ -66,7 +66,7 @@ app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
 
     let editVideo = (videoId, commentedVideo) => {
         return $q((resolve, reject) => {
-            $http.patch(`${FirebaseURL}/videos/${videoId}.json`, JSON.stringify(commentedVideo))
+            $http.patch(`${FirebaseURL}/${fireUser}/${videoId}.json`, JSON.stringify(commentedVideo))
                 .success((result) => {
                     resolve(result);
 
