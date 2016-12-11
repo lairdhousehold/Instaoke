@@ -3,10 +3,11 @@
 app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
     let fireUser = firebase.auth().currentUser.uid
 
-let getSavedVideos = (userId) => {
+    let getSavedVideos = (userId) => {
         let items = [];
+
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos.json?orderBy="userId"&equalTo="${fireUser}"`)
+            $http.get(`${FirebaseURL}/${fireUser}/videos.json?`)
 
             .success((itemObject) => {
                     Object.keys(itemObject).forEach((key) => {
@@ -23,32 +24,6 @@ let getSavedVideos = (userId) => {
         });
     };
 
-function getSavedVideos() {
-  if (firebase.auth().currentUser) {
-    let userId = firebase.auth().currentUser.uid;
-    return firebase.database().ref('videos/' + userId)
-      .once('value')
-      .then(function(snapshot) {
-      var data = snapshot.val();
-      return data;
-    });
-  } else {
-    return new Promise(function(resolve,reject) {
-      resolve();
-    })
-  }
-}
-=======
-                    resolve(items);
-                    console.log(fireUser)
-                })
-                .error((error) => {
-                    reject(error);
-                });
-        });
-    };
->>>>>>> f6d21b2e43a374844c769092b005e2f5b1901f7b
-
     let saveVideo = function(video) {
         let newItem = {
             title: video.snippet.title,
@@ -59,7 +34,7 @@ function getSavedVideos() {
         }
         console.log("save video", newItem);
         return $q(function(resolve, reject) {
-            $http.post(`${FirebaseURL}/videos.json`, JSON.stringify(newItem))
+            $http.post(`${FirebaseURL}/${fireUser}/videos.json`, JSON.stringify(newItem))
                 .success((ObjFromFirebase) => {
                     resolve(ObjFromFirebase); //
                 })
@@ -72,7 +47,7 @@ function getSavedVideos() {
 
     let deleteVideo = (itemId) => {
         return $q((resolve, reject) => {
-            $http.delete(`${FirebaseURL}/videos/${itemId}.json`)
+            $http.delete(`${FirebaseURL}/${fireUser}/videos/${itemId}.json`)
                 .success((objFromFirebase) => {
                     resolve(objFromFirebase);
                     console.log(objFromFirebase)
@@ -82,7 +57,7 @@ function getSavedVideos() {
 
     let getSingleVideo = (videoId) => {
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/videos/${videoId}.json`)
+            $http.get(`${FirebaseURL}/${fireUser}/videos/${videoId}.json`)
                 .success((singleItem) => {
                     resolve(singleItem);
                 });
@@ -92,7 +67,7 @@ function getSavedVideos() {
 
     let editVideo = (videoId, commentedVideo) => {
         return $q((resolve, reject) => {
-            $http.patch(`${FirebaseURL}/videos/${videoId}.json`, JSON.stringify(commentedVideo))
+            $http.patch(`${FirebaseURL}/${fireUser}/videos/${videoId}.json`, JSON.stringify(commentedVideo))
                 .success((result) => {
                     resolve(result);
 
