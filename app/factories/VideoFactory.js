@@ -3,12 +3,11 @@
 app.factory("VideoFactory", ($q, $http, FirebaseURL, AuthFactory) => {
     let fireUser = firebase.auth().currentUser.uid
 
-let getSavedVideos = (userId) => {
+    let getSavedVideos = (userId) => {
         let items = [];
+
         return $q((resolve, reject) => {
-
-            $http.get(`${FirebaseURL}/videos.json?orderBy="userId"&equalTo="${fireUser}"`)
-
+            $http.get(`${FirebaseURL}/${fireUser}/videos.json?`)
 
             .success((itemObject) => {
                     Object.keys(itemObject).forEach((key) => {
@@ -24,22 +23,6 @@ let getSavedVideos = (userId) => {
                 });
         });
     };
-
-function getSavedVideos() {
-  if (firebase.auth().currentUser) {
-    let userId = firebase.auth().currentUser.uid;
-    return firebase.database().ref('videos/' + userId)
-      .once('value')
-      .then(function(snapshot) {
-      var data = snapshot.val();
-      return data;
-    });
-  } else {
-    return new Promise(function(resolve,reject) {
-      resolve();
-    })
-  }
-}
 
     let saveVideo = function(video) {
         let newItem = {
@@ -74,7 +57,7 @@ function getSavedVideos() {
 
     let getSingleVideo = (videoId) => {
         return $q((resolve, reject) => {
-            $http.get(`${FirebaseURL}/${fireUser}/videos/.json`)
+            $http.get(`${FirebaseURL}/${fireUser}/videos/${videoId}.json`)
                 .success((singleItem) => {
                     resolve(singleItem);
                 });
@@ -84,7 +67,7 @@ function getSavedVideos() {
 
     let editVideo = (videoId, commentedVideo) => {
         return $q((resolve, reject) => {
-            $http.patch(`${FirebaseURL}/${fireUser}/${videoId}.json`, JSON.stringify(commentedVideo))
+            $http.patch(`${FirebaseURL}/${fireUser}/videos/${videoId}.json`, JSON.stringify(commentedVideo))
                 .success((result) => {
                     resolve(result);
 
